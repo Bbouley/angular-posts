@@ -1,0 +1,34 @@
+body{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a{
+  font-weight: bold;
+}
+
+.postContainer{
+  background-color: black;
+  height: 250px;
+}
+
+.postShowPhoto{
+  margin-top: 10px;
+  background-color: white;
+  height: 230px;
+}
+
+.postRating{
+  margin-top:10px;
+  margin-left: 20px;
+  background-color: white;
+  height: 30px;
+}
+
+.postDescriptionText{
+  margin-top:10px;
+  margin-left: 20px;
+  background-color: white;
+  height: 120px;
+}
+
+

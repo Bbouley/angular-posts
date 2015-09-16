@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html ng-app = 'controllerApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <div ng-controller = 'formController'>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <a class="navbar-brand">Super Comment For Likes And Stuff!!!</a>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By : <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+          <button type="submit" class="btn btn-default" ng-click ='showForm = true'><span class="glyphicon glyphicon-pencil"></span>&nbsp;New Post</button>
+        </form>
+      </div>
+
+     <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+  <div class = 'container'>
+
+
+        <form name = 'postForm' ng-show='showForm' ng-required="showForm">
+          <div class="form-group">
+            <label for="postTitle">Title</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title of post" name = 'postTitle' ng-model = 'newPost.postTitle' required>
+          </div>
+          <div class="form-group">
+            <label for="postAuthor">Author</label>
+            <input type="text" class="form-control" id="postAuthor" placeholder="Author of post" name='postAuthor' ng-model = 'newPost.postAuthor' required>
+          </div>
+          <div class="form-group">
+            <label for="postDescription">Description</label>
+            <textarea type="text" class="form-control" rows='4' id="postDescription" placeholder="Describe your post, or whatever..." name='postDescription' ng-model = 'newPost.postDescription' required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="postPicture">Picture</label>
+            <input type="url" class="form-control" id="postPicture" placeholder="Add a picture!!!" name='postPhoto' ng-model = 'newPost.postPhoto' required>
+          </div>
+          <button type="submit" class="btn btn-default" ng-click='savePost(postForm.postTitle, postForm.postAuthor, postForm.postDescription, postForm.postPhoto)' ng-disabled = 'postForm.$invalid'>Submit Post</button><br><br>
+          <div ng-show= "postForm.$invalid" class = 'alert alert-danger'>
+          <p>Please Fill Out All Fields!!</p>
+          </div>
+          <div ng-show = "postForm.$valid" class = 'alert alert-success'>
+            <p>Excellently Done. Now Submit that shit!!!</p>
+          </div>
+        </form>
+
+    </div>
+  </div>
+
+  <div class = 'container'>
+    <div class = 'col-xs-12 postContainer'>
+      <div class = 'col-xs-3 postShowPhoto'>
+      </div>
+      <div class = 'col-xs-8 postRating'>
+      </div>
+      <div class = 'col-xs-8 postDescriptionText'>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src = 'https://code.jquery.com/jquery-2.1.4.min.js'></script>
+  <script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js'></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src = 'main.js'></script>
+</body>
+</html>

@@ -125,16 +125,16 @@
       </div>
 
       <div class = 'row col-xs-12 commentForm' ng-show = 'post.showCommentForm'>
-        <form name = 'commentForm' ng-required="commentForm">
+        <form name = 'commentForm' ng-required="commentForm" novalidate>
           <div class="form-group">
-            <label for="commentTitle">Title</label>
-            <input type="text" class="form-control" id="commentTitle" placeholder="Title of Comment" name = 'commentTitle' ng-model = 'newComment.commentTitle' required>
+            <label>Title</label>
+            <input type="text" class="form-control" id="commentTitle" placeholder="Title of Comment" name = 'commentTitle' ng-model = 'userInput.title' required>
           </div>
           <div class="form-group">
-            <label for="commentMain">Comment</label>
-            <input type="text" class="form-control" id="commentMain" placeholder="Write Comment Here" name='commentMain' ng-model = 'newComment.commentMain' required>
+            <label>Comment</label>
+            <input type="text" class="form-control" id="commentMain" placeholder="Write Comment Here" name='commentMain' ng-model = 'userInput.main' required>
           </div>
-           <button type="submit" class="btn btn-default" ng-click = 'newComment(commentForm.commentTitle, commentForm.commentMain)'>Submit Comment</button>
+           <button type="submit" class="btn btn-default" ng-click = 'newComment()'>Submit Comment</button>
         </form>
       </div>
 

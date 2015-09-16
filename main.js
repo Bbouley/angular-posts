@@ -1,6 +1,7 @@
 var app = angular.module('controllerApp', ['ngSanitize']);
 
 var mainControllerFunction = function($scope){
+  $scope.userInput = {};
   $scope.posts = [];
   $scope.showForm = false;
   $scope.newPost = {
@@ -35,13 +36,13 @@ var mainControllerFunction = function($scope){
   $scope.showCommentFormFunction = function(){
     this.post.showCommentForm = true;
   };
-  $scope.newComment = function(title, mainText){
+  $scope.newComment = function(){
     var comment = {
-      title : title.$modelValue,
-      mainText : mainText.$modelValue,
+      title : $scope.userInput.title,
+      mainText : $scope.userInput.main,
     };
     this.post.comments.push(comment);
-    this.comment.setPristine();
+    $scope.userInput = {};
     this.post.showCommentForm = false;
   };
   $scope.showCommentsSection = function(){

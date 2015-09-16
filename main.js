@@ -23,9 +23,8 @@ var mainControllerFunction = function($scope){
     };
     $scope.posts.push(post);
     $scope.newPost = {};
-    $scope.postForm.$setPristine();
+    // $scope.postForm.$setPristine();
     $scope.showForm = false;
-    console.log($scope.posts);
   };
   $scope.postUp = function(){
     this.post.votes += 1;
@@ -33,7 +32,6 @@ var mainControllerFunction = function($scope){
   $scope.postDown = function(){
     this.post.votes -= 1;
   };
-
   $scope.showCommentFormFunction = function(){
     this.post.showCommentForm = true;
   };
@@ -43,7 +41,7 @@ var mainControllerFunction = function($scope){
       mainText : mainText.$modelValue,
     };
     this.post.comments.push(comment);
-    console.log(this.post.comments);
+    this.comment.setPristine();
     this.post.showCommentForm = false;
   };
   $scope.showCommentsSection = function(){

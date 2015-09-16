@@ -5,11 +5,12 @@
   <title>Document</title>
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-  <div ng-controller = 'formController'>
+  <div ng-controller = 'mainController'>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
     <a class="navbar-brand">Super Comment For Likes And Stuff!!!</a>
@@ -45,13 +46,14 @@
   </div>
 </nav>
 
+
   <div class = 'container'>
 
 
         <form name = 'postForm' ng-show='showForm' ng-required="showForm">
           <div class="form-group">
             <label for="postTitle">Title</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Title of post" name = 'postTitle' ng-model = 'newPost.postTitle' required>
+            <input type="text" class="form-control" id="postTitle" placeholder="Title of post" name = 'postTitle' ng-model = 'newPost.postTitle' required>
           </div>
           <div class="form-group">
             <label for="postAuthor">Author</label>
@@ -75,17 +77,80 @@
         </form>
 
     </div>
-  </div>
 
-  <div class = 'container'>
-    <div class = 'col-xs-12 postContainer'>
-      <div class = 'col-xs-3 postShowPhoto'>
+
+    <div class = 'col-xs-10 col-xs-offset-1 postContainer' ng-repeat='post in posts'>
+
+      <div class = 'col-xs-3 postShowPhoto' ng-style='{"background-image" : "url(" + post.photoURL + " )"}'>
       </div>
-      <div class = 'col-xs-8 postRating'>
+
+      <div class = 'col-xs-9 postRating'>
+        {{post.title}}&nbsp;<span class = 'mini'>by {{post.author}}
+        </span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <i class="fa fa-hand-lizard-o" ng-click='postUp()'></i>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <i class="fa fa-thumbs-o-down" ng-click='postDown()'></i>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span ng-class = "{
+          'green' : post.votes > 0,
+          'red' : post.votes < 0,
+          'black' : post.votes === 0,
+        }" >{{post.votes}}
+        </span>
       </div>
-      <div class = 'col-xs-8 postDescriptionText'>
+
+      <div class = 'col-xs-9 postDescriptionText'>
+      {{post.description}}
       </div>
+
+      <div class = 'col-xs-9 postDetails'>
+        <span class = 'mini'>
+            Posted At : {{post.date | date : 'shortTime'}}
+            on : {{post.date |  date: 'fullDate'}}
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span ng-click ='showCommentFormFunction()'>
+            <i class="fa fa-crosshairs"></i>
+            &nbsp;
+            Add Comment |
+          </span>
+            <span ng-click='showCommentsSection()'>
+              &nbsp;
+              <i class="fa fa-eye">
+              </i>
+              &nbsp;
+              Show Comment
+            </span>
+        </span>
+      </div>
+
+      <div class = 'row col-xs-12 commentForm' ng-show = 'post.showCommentForm'>
+        <form name = 'commentForm' ng-required="commentForm">
+          <div class="form-group">
+            <label for="commentTitle">Title</label>
+            <input type="text" class="form-control" id="commentTitle" placeholder="Title of Comment" name = 'commentTitle' ng-model = 'newComment.commentTitle' required>
+          </div>
+          <div class="form-group">
+            <label for="commentMain">Comment</label>
+            <input type="text" class="form-control" id="commentMain" placeholder="Write Comment Here" name='commentMain' ng-model = 'newComment.commentMain' required>
+          </div>
+           <button type="submit" class="btn btn-default" ng-click = 'newComment(commentForm.commentTitle, commentForm.commentMain)'>Submit Comment</button>
+        </form>
+      </div>
+
+      <div class = 'row col-xs-12' ng-show ='post.showComments'>
+      <h2>Comments</h2>
+        <div class = 'comments' ng-repeat = 'comment in post.comments'>
+          <p>Title : {{comment.title}}</p>
+          <p>Comment : {{comment.mainText}}</p>
+        </div>
+        <button type= 'submit' class = 'btn btn-default' ng-click = 'hideCommentsSection()' ng-disabled = 'comment.$invalid'>Hide</button>
+
+      </div>
+
     </div>
+
+
   </div>
 
   <script type="text/javascript" src = 'https://code.jquery.com/jquery-2.1.4.min.js'></script>

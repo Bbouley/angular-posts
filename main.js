@@ -51,10 +51,15 @@ var mainControllerFunction = function($scope){
   $scope.hideCommentsSection= function(){
     this.post.showComments = false;
   };
+  $scope.test = 'test';
+  $scope.sortOptions = ['created_at', 'author', 'title'];
+  $scope.sort = 'created_at';
+  $scope.sortPost = function(number){
+    $scope.sort = $scope.sortOptions[number];
+  };
 };
 
 var postControllerFunction = function($scope){
-  $scope.test = 'test';
 };
 
 // app.controller('postController', ['$scope', postControllerFunction]);

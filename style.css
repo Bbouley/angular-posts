@@ -9,6 +9,7 @@ a{
 .postContainer{
   background-color: black;
   height: 250px;
+  margin-top:10px;
 }
 
 .postShowPhoto{

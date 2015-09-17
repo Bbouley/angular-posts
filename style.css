@@ -6,12 +6,6 @@ a{
   font-weight: bold;
 }
 
-.postContainer{
-  background-color: black;
-  height: 250px;
-  margin-top:10px;
-}
-
 .postShowPhoto{
   margin-top: 15px;
   background-color: white;
@@ -67,5 +61,16 @@ a{
 
 .commentForm{
   margin-top:20px;
+}
+
+.commentsShown{
+  margin-top:20px;
+}
+
+.postContainer{
+  background-color: black;
+  display: table-cell;
+  margin-top:20px;
+  border : 2px solid red;
 }
 

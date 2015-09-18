@@ -6,6 +6,15 @@ a{
   font-weight: bold;
 }
 
+th, td{
+  border-left: black 1px solid;
+  border-bottom: black 1px solid;
+}
+
+th{
+  font-weight: 900;
+}
+
 .postShowPhoto{
   margin-top: 15px;
   background-color: #F7F7F7;
@@ -79,3 +88,6 @@ a{
   border-radius: 5px;
 }
 
+.cursorSelect{
+  cursor: pointer;
+}

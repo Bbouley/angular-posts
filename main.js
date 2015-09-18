@@ -24,7 +24,7 @@ var mainControllerFunction = function($scope){
     };
     $scope.posts.push(post);
     $scope.newPost = {};
-    // $scope.postForm.$setPristine();
+    $scope.postForm.$setPristine();
     $scope.showForm = false;
   };
   $scope.postUp = function(){

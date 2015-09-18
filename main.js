@@ -34,7 +34,14 @@ var mainControllerFunction = function($scope){
     this.post.votes -= 1;
   };
   $scope.showCommentFormFunction = function(){
-    this.post.showCommentForm = true;
+    if(this.post.showCommentForm === false){
+      this.post.showCommentForm = true;
+    } else {
+      this.post.showCommentForm = false;
+    }
+  };
+  $scope.hideCommentFormFunction = function(){
+    this.post.showCommentForm = false;
   };
   $scope.newComment = function(){
     var comment = {
@@ -45,11 +52,15 @@ var mainControllerFunction = function($scope){
     $scope.userInput = {};
     this.post.showCommentForm = false;
   };
+
   $scope.showCommentsSection = function(){
-    this.post.showComments = true;
-  };
-  $scope.hideCommentsSection= function(){
-    this.post.showComments = false;
+    if(this.post.showComments === false){
+      console.log('test');
+      this.post.showComments = true;
+    } else if(this.post.showComments === true){
+      console.log('test2');
+      this.post.showComments = false;
+    }
   };
 
   $scope.sort = '-votes';

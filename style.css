@@ -8,7 +8,7 @@ a{
 
 .postShowPhoto{
   margin-top: 15px;
-  background-color: white;
+  background-color: #F7F7F7;
   height: 220px;
   width: 200px;
   background-repeat: no-repeat;
@@ -18,29 +18,32 @@ a{
 .postRating{
   margin-top:10px;
   margin-left: 20px;
-  background-color: white;
+  background-color: #F7F7F7;
   height: 40px;
   font-size: 30px;
   padding-right: 50px;
+  border-radius:2px;
 }
 
 .postDescriptionText{
   margin-top:10px;
   margin-left: 20px;
-  background-color: white;
+  background-color: #F7F7F7;
   height: 130px;
   padding-right: 50px;
   font-size: 20px;
   overflow: scroll;
+  border-radius: 3px;
 }
 
 .postDetails{
   margin-top:10px;
   margin-left: 20px;
-  background-color: white;
+  background-color: #F7F7F7;
   height: 40px;
   font-size: 30px;
   padding-right: 50px;
+  border-radius:2px;
 }
 
 .green{
@@ -68,9 +71,11 @@ a{
 }
 
 .postContainer{
-  background-color: black;
+  background-color: #E1E1E1;
   display: table-cell;
+  height: auto;
   margin-top:20px;
-  border : 2px solid red;
+  padding-bottom: 10px;
+  border-radius: 5px;
 }
 
